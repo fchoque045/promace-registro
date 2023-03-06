@@ -1,8 +1,12 @@
 import type {NextPage} from 'next'
+import { Typography } from '@mui/material'
+import { PromaceLayout } from '../components/layouts'
 
 const Home: NextPage = () => {
     return (
-      <h1>Registro Promace</h1>
+        <PromaceLayout title={'Promace - Registro'} pageDescription={'Inscripciones a los cursos para docente JUJUY'}>
+          <Typography variant='h1' component={'h1'}>Formulario</Typography>
+        </PromaceLayout>
     )
 }
 
