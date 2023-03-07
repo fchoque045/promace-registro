@@ -1,9 +1,12 @@
 import NextLink from 'next/link';
 import { Box, Button, Card, CardContent, Divider, FormControl, Grid, InputLabel, Link, MenuItem, Select, TextField, Typography, Unstable_Grid2 } from "@mui/material"
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { SelectChangeEvent } from '@mui/material/Select';
+import { DniContext } from '../../context/DniContext';
 
 export const FormRegister = () => {
+
+    const {persona, updateDni} = useContext(DniContext);
 
     const [depa, setDepa] = useState('');
 
@@ -30,17 +33,17 @@ export const FormRegister = () => {
                     <Box >
                         <Grid item xs={12} sm={8} sx={{mt:1}} display='flex' justifyContent='space-between' alignItems='center'>
                             <Typography>DNI: </Typography>
-                            <Typography variant='subtitle1'>40154045</Typography>
+                            <Typography variant='subtitle1'>{persona.dni}</Typography>
                         </Grid>
 
                         <Grid item xs={12} sm={8} sx={{mt:1}} display='flex' justifyContent='space-between' alignItems='center'>
                             <Typography>Nombre: </Typography>
-                            <Typography variant='subtitle1'>FABIAN GUILLERMO</Typography>
+                            <Typography variant='subtitle1'>{persona.nombre}</Typography>
                         </Grid>
 
                         <Grid item xs={12} sm={8} sx={{mt:1}} display='flex' justifyContent='space-between' alignItems='center'>
                             <Typography>Apellido: </Typography>
-                            <Typography variant='subtitle1'>CHOQUE</Typography>
+                            <Typography variant='subtitle1'>{persona.apellido}</Typography>
                         </Grid>
                     </Box>
 
