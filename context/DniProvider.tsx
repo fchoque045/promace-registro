@@ -19,15 +19,15 @@ export const DniProvider:FC<PropsWithChildren> = ({children}) => {
     const [state, dispatch] = useReducer(DniReducer, Dni_INITIAL_STATE)
 
     const updateDni = async (dni: string) => {
-        const resp = await padronApi.get<string>(`/persona/?dni=${dni}`)
+        const {status, data} = await padronApi.get<Persona[]>(`/persona/?dni=${dni}`)
         let newPersona:Persona = {
             dni,
             nombre: 'Nombre',
             apellido: 'Apellido'
         }
-        if (resp.status == 200) {
-            newPersona.nombre = resp.data[0]['nombre']
-            newPersona.apellido = resp.data[0]['apellido']
+        if (status == 200) {
+            newPersona.nombre = data[0]['nombre']
+            newPersona.apellido = data[0]['apellido']
         } else {
             newPersona.dni = 'No se encuentra'
         }
