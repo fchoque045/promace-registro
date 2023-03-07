@@ -1,10 +1,19 @@
 import NextLink from 'next/link';
-import { Box, Button, Card, CardContent, Divider, Grid, Link, TextField, Typography, Unstable_Grid2 } from "@mui/material"
+import { Box, Button, Card, CardContent, Divider, FormControl, Grid, InputLabel, Link, MenuItem, Select, TextField, Typography, Unstable_Grid2 } from "@mui/material"
+import { useState } from 'react';
+import { SelectChangeEvent } from '@mui/material/Select';
 
 export const FormRegister = () => {
+
+    const [depa, setDepa] = useState('');
+
+    const handleChange = (event: SelectChangeEvent) => {
+      setDepa(event.target.value as string);
+    };
+
     return (
         <Grid container display='flex' justifyContent='center' alignItems='center'>
-            <Card className='form-card' sx={{width: 600}}>
+            <Card className='form-card' sx={{width: 700}}>
                 <CardContent>
                     <Box sx={{mt:3, my:3}}>
                         <Typography variant='h1' component='h1'>Registro</Typography>
@@ -36,6 +45,52 @@ export const FormRegister = () => {
                     </Box>
 
                     <Divider sx={{my:1}}/>
+                    <Grid container display='flex' justifyContent='space-between' spacing={2}>
+                        <Grid item sx={{mt:3}} xs={12} sm={6} >
+                            <TextField label='Correo electronico' variant='outlined' fullWidth/>       
+                        </Grid>
+
+                        <Grid item sx={{mt:3}} xs={12} sm={6}>
+                            <TextField label='Confirmar correo electronico' variant='outlined' fullWidth/>       
+                        </Grid>
+                        
+                        <Grid item sx={{mt:3}} xs={12}>
+                            <TextField label='Nombre de Escuela' variant='outlined' fullWidth/>       
+                        </Grid>
+
+                        <Grid item sx={{mt:3}} xs={12} sm={6}>
+                            <TextField label='Telefono' variant='outlined' fullWidth/>       
+                        </Grid>
+
+                        <Grid item sx={{mt:3}} xs={12} sm={6}>
+                            <FormControl fullWidth>
+                                <InputLabel>Departamento</InputLabel>
+                                <Select
+                                    variant='outlined'
+                                    label='Departamento'
+                                    value={depa}
+                                    onChange={handleChange}
+                                >
+                                    <MenuItem value={1}>Dr. Manuel Belgrano</MenuItem>
+                                    <MenuItem value={2}>Cochinoca</MenuItem>
+                                    <MenuItem value={3}>El Carmen</MenuItem>
+                                    <MenuItem value={4}>Humahuaca</MenuItem>
+                                    <MenuItem value={5}>Ledesma</MenuItem>
+                                    <MenuItem value={6}>Palpalá</MenuItem>
+                                    <MenuItem value={7}>Rinconada</MenuItem>
+                                    <MenuItem value={8}>San Antonio</MenuItem>
+                                    <MenuItem value={9}>San Pedro</MenuItem>
+                                    <MenuItem value={10}>Santa Bárbara</MenuItem>
+                                    <MenuItem value={11}>Susques</MenuItem>
+                                    <MenuItem value={12}>Tilcara</MenuItem>
+                                    <MenuItem value={13}>Tumbaya</MenuItem>
+                                    <MenuItem value={14}>Valle Grande</MenuItem>
+                                    <MenuItem value={15}>Yavi</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Grid>
+
+                    </Grid>
 
                     <Box sx={{mt:5, my: 3}}>
                         <NextLink href='/registro' passHref legacyBehavior>
